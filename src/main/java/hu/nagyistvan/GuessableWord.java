@@ -16,4 +16,13 @@ public class GuessableWord {
     public List<String> getLetters() {
         return letters;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for(String letter : letters) {
+            result.append(letter);
+        }
+        return result.toString();
+    }
 }
