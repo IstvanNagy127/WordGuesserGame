@@ -17,6 +17,10 @@ public class GuessableWord {
         return letters;
     }
 
+    public String getLetter(int index) {
+        return letters.get(index);
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
