@@ -8,10 +8,22 @@ public class PlayGround {
     private String solution = theWord.getTheWord();
     private List<Character> playerGuesses = new ArrayList<>();
 
+    private String userWord = "";
+
+
     public void addChar(char letter) {
         playerGuesses.add(letter);
     }
 
+    public boolean compareWords(String guess) {
+        userWord = guess;
+        if(solution.equals(userWord)) {
+            return true;
+        } else{
+            System.out.println("Sajnos nem talált.");
+            return false;
+        }
+    }
 
     public void drawing() {
         for(int i=0; i< solution.length(); i++) {
@@ -26,6 +38,8 @@ public class PlayGround {
 
 
     public boolean isComplete() {
-        return false;
+       return compareWords(userWord);
     }
+
+
 }

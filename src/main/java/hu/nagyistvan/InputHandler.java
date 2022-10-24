@@ -24,10 +24,16 @@ public class InputHandler {
     }
 
     public char readLetter() {
-        System.out.println("kérem adja meg a tippjét:");
+        System.out.println("kérem adja meg egy betűt:");
         String input = scanner.nextLine();
          return input.charAt(0);
 
 
+    }
+
+    public String readGuess() {
+        System.out.println("Tippeljen mi a megfejtés?");
+        String input = scanner.nextLine();
+        return input;
     }
 }

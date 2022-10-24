@@ -30,8 +30,13 @@ public class Game
                 break;
         }
         for(int round=1; round <=10 && !playGround.isComplete(); round++) {
+            playGround.drawing();
               playGround.addChar(inputHandler.readLetter());
             playGround.drawing();
+               if(playGround.compareWords(inputHandler.readGuess())) {
+                   break;
+               }
+
         }
         if(playGround.isComplete()) {
             System.out.println("Gratulálunk! Ön nyert!");
