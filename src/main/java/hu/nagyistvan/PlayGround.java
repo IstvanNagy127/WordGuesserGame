@@ -17,6 +17,8 @@ public class PlayGround {
         }
     }
 
+
+
     @Override
     public String toString() {
         StringBuilder ground = new StringBuilder();
@@ -24,5 +26,9 @@ public class PlayGround {
             ground.append("_");
         }
         return ground.toString();
+    }
+
+    public boolean isInvented() {
+        return true;
     }
 }

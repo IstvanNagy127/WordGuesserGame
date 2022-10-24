@@ -18,6 +18,7 @@ public class Game
     private void run(Scanner scanner) {
         InputHandler inputHandler = new InputHandler(scanner);
         int diffLevel = inputHandler.chooseDifficulty();
+        PlayGround playGround = new PlayGround();
         switch (diffLevel) {
             case 1 : System.out.println("here will be the easy game");
             break;
@@ -27,6 +28,15 @@ public class Game
                 break;
             default : System.out.println("error");
                 break;
+        }
+        for(int round=1; round <=10 && !playGround.isInvented(); round++) {
+            System.out.println(playGround);
+            String letter = inputHandler.readLetter();
+        }
+        if(playGround.isInvented()) {
+            System.out.println("Gratulálunk! Ön nyert!");
+        } else {
+            System.out.println("Sajnáljuk, Ön vesztett!");
         }
     }
 }
