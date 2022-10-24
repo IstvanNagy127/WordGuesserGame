@@ -1,48 +1,31 @@
 package hu.nagyistvan;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayGround {
+   private TheWord theWord = new TheWord();
+    private String solution = theWord.getTheWord();
+    private List<Character> playerGuesses = new ArrayList<>();
 
-    GuessableWord word = new GuessableWord("example");
-    private Map<Integer, SolutionLetter> gamePad = new HashMap<>();
-    private List<String> solution = word.getLetters();
-
-    StringBuilder ground = new StringBuilder();
-
-    public PlayGround() {
-        for(int i =0;i<solution.size();i++) {
-            gamePad.put(i, new SolutionLetter(word.getLetter(i)));
-        }
-    }
-
-    public void checking(String inputLetter) {
-        for(Map.Entry<Integer, SolutionLetter> mapLetter : gamePad.entrySet()) {
-            if(inputLetter == mapLetter.getValue().getValue()) {
-               mapLetter.setValue(new SolutionLetter(inputLetter, true));
-            }
-        }
+    public void addChar(char letter) {
+        playerGuesses.add(letter);
     }
 
 
-    @Override
-    public String toString() {
-
-        for(Map.Entry<Integer, SolutionLetter> mapLetter : gamePad.entrySet()) {
-            if(mapLetter.getValue().isHit()) {
-                ground.append(mapLetter.getValue());
+    public void drawing() {
+        for(int i=0; i< solution.length(); i++) {
+            if(playerGuesses.contains(solution.charAt(i))) {
+                System.out.print(solution.charAt(i));
             } else {
-                ground.append("_");
+                System.out.print("_");
             }
         }
-        return ground.toString();
+        System.out.println();
     }
 
-    public boolean isInvented() {
-        if(word.toString() == ground.toString()) {
-            return true;
-        } else {
-            return false;
-        }
+
+    public boolean isComplete() {
+        return false;
     }
 }

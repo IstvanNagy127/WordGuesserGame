@@ -18,25 +18,16 @@ public class InputHandler {
             System.out.println("2 - Közepes");
             System.out.println("3 - Nehéz");
             level = scanner.nextInt();
+            scanner.nextLine();
         } while(level < 1 || level >3);
         return level;
     }
 
-    public String readLetter() {
-        String input;
-        boolean correctInput;
+    public char readLetter() {
+        System.out.println("kérem adja meg a tippjét:");
+        String input = scanner.nextLine();
+         return input.charAt(0);
 
-        do {
-            System.out.println("Adjon meg egy betűt: ");
-            input = scanner.nextLine().toUpperCase();
-            if(input.matches("[A-Z]")) {
-                correctInput = true;
-            } else {
-                correctInput = false;
-                System.out.println("Érvénytelen karaktert adott meg, próbálja újra!");
-            }
-        } while(!correctInput);
 
-        return input;
     }
 }

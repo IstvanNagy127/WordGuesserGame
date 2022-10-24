@@ -29,12 +29,11 @@ public class Game
             default : System.out.println("error");
                 break;
         }
-        for(int round=1; round <=10 && !playGround.isInvented(); round++) {
-            System.out.println(playGround);
-            String letter = inputHandler.readLetter();
-            playGround.checking(letter);
+        for(int round=1; round <=10 && !playGround.isComplete(); round++) {
+              playGround.addChar(inputHandler.readLetter());
+            playGround.drawing();
         }
-        if(playGround.isInvented()) {
+        if(playGround.isComplete()) {
             System.out.println("Gratulálunk! Ön nyert!");
         } else {
             System.out.println("Sajnáljuk, Ön vesztett!");
