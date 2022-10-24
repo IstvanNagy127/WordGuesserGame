@@ -29,9 +29,10 @@ public class Game
             default : System.out.println("error");
                 break;
         }
-        for(int round=1; round <=10 && playGround.isInvented(); round++) {
+        for(int round=1; round <=10 && !playGround.isInvented(); round++) {
             System.out.println(playGround);
             String letter = inputHandler.readLetter();
+            playGround.checking(letter);
         }
         if(playGround.isInvented()) {
             System.out.println("Gratulálunk! Ön nyert!");

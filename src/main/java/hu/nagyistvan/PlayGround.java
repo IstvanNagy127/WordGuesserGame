@@ -1,34 +1,48 @@
 package hu.nagyistvan;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PlayGround {
 
     GuessableWord word = new GuessableWord("example");
-    private final Map<Integer, String> gamePad = new HashMap<>();
-    private final List<String> solution = word.getLetters();
+    private Map<Integer, SolutionLetter> gamePad = new HashMap<>();
+    private List<String> solution = word.getLetters();
+
+    StringBuilder ground = new StringBuilder();
 
     public PlayGround() {
         for(int i =0;i<solution.size();i++) {
-            gamePad.put(i, word.getLetter(i));
+            gamePad.put(i, new SolutionLetter(word.getLetter(i)));
+        }
+    }
+
+    public void checking(String inputLetter) {
+        for(Map.Entry<Integer, SolutionLetter> mapLetter : gamePad.entrySet()) {
+            if(inputLetter == mapLetter.getValue().getValue()) {
+               mapLetter.setValue(new SolutionLetter(inputLetter, true));
+            }
         }
     }
 
 
-
     @Override
     public String toString() {
-        StringBuilder ground = new StringBuilder();
-        for(String letter : solution) {
-            ground.append("_");
+
+        for(Map.Entry<Integer, SolutionLetter> mapLetter : gamePad.entrySet()) {
+            if(mapLetter.getValue().isHit()) {
+                ground.append(mapLetter.getValue());
+            } else {
+                ground.append("_");
+            }
         }
         return ground.toString();
     }
 
     public boolean isInvented() {
-        return true;
+        if(word.toString() == ground.toString()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
