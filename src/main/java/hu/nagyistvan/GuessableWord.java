@@ -14,7 +14,7 @@ public class GuessableWord {
     }
 
     public List<String> getLetters() {
-        return letters;
+        return new ArrayList<>(letters);
     }
 
     public String getLetter(int index) {
