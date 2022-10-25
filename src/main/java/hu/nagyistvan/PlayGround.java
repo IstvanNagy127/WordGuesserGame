@@ -20,7 +20,7 @@ public class PlayGround {
         if(solution.equals(userWord)) {
             return true;
         } else{
-            System.out.println("Sajnos nem talált.");
+            System.out.println("Sajnos nem találta ki a megfejtést.");
             return false;
         }
     }
